@@ -1,67 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Avinash Reddy Baddam | Data Engineer</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Devicon (icons for skills) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <h1>Avinash Reddy Baddam</h1>
-    <p>Data Engineer | Databricks · AWS · SQL · PySpark</p>
+  <!-- Sticky Navbar -->
+  <header class="nav">
+    <a href="#top" class="brand">AR Baddam</a>
+    <nav id="nav-links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
+  <!-- Hero -->
+  <section id="top" class="hero">
+    <div class="hero-inner">
+      <h1>Avinash Reddy Baddam</h1>
+      <p class="tagline">Data Engineer • Databricks · PySpark · Delta Lake · AWS · SQL</p>
+      <div class="cta">
+        <a class="btn" href="#projects">View Work</a>
+        <a class="btn outline" href="mailto:avesred7@gmail.com">Contact</a>
+      </div>
+    </div>
+  </section>
+
   <!-- About -->
-  <section id="about">
+  <section id="about" class="section">
     <h2>About Me</h2>
     <p>
-      I’m a Data Engineer specializing in building scalable ETL pipelines and
-      modern data platforms using Databricks, PySpark, Delta Lake, and AWS. I focus
-      on performance optimization, schema management, and CI/CD for data workflows.
+      Data Engineer focused on reliable, scalable data platforms on Databricks (Bronze → Silver → Gold)
+      with strong experience in PySpark, Delta optimization (partitioning, Z-Order), CDC (SCD-1/2), and CI/CD on AWS.
+      I like simplifying pipelines, improving runtimes, and making data products easy to ship and maintain.
     </p>
   </section>
 
-  <!-- Projects -->
-  <section id="projects">
-    <h2>Projects</h2>
-    <div class="project">
-      <h3>Project 1</h3>
-      <p>Description of the project goes here.</p>
-    </div>
-    <div class="project">
-      <h3>Project 2</h3>
-      <p>Description of the project goes here.</p>
+  <!-- Experience -->
+  <section id="experience" class="section">
+    <h2>Experience</h2>
+    <div class="cards">
+      <article class="card hover-card">
+        <header>
+          <h3>Senior Data Engineer</h3>
+          <span class="meta">Healthcare Data Platform · 2023–Present</span>
+        </header>
+        <ul class="bullets">
+          <li>Designed end-to-end ETL (Bronze → Silver → Gold) on Databricks for high-volume datasets.</li>
+          <li>Implemented CDC & partition/Z-Order; reduced pipeline runtime by ~40%.</li>
+          <li>YAML-driven configs + GitHub Actions CI/CD for notebooks and workflows.</li>
+        </ul>
+        <div class="tags">Databricks · PySpark · Delta Lake · AWS S3 · GitHub Actions</div>
+      </article>
+
+      <article class="card hover-card">
+        <header>
+          <h3>Data Engineer</h3>
+          <span class="meta">Data Modernization · 2021–2023</span>
+        </header>
+        <ul class="bullets">
+          <li>Migrated legacy SQL/SSMS pipelines to Databricks; standardized schemas and audit columns.</li>
+          <li>Optimized joins with broadcast hints & clustering for BI analytics performance.</li>
+          <li>Wrote troubleshooting playbooks for cluster/library issues and on-call response.</li>
+        </ul>
+        <div class="tags">SQL · Performance Tuning · Airflow · Power BI · IAM</div>
+      </article>
     </div>
   </section>
 
+  <!-- Projects -->
+  <section id="projects" class="section">
+    <h2>Highlighted Projects</h2>
+    <div class="grid">
+      <article class="tile hover-card">
+        <h3>Scalable Healthcare Pipeline</h3>
+        <p>Bronze → Silver → Gold architecture with CDC and schema enforcement; job metrics + alerts.</p>
+        <div class="tags">Databricks · PySpark · Delta · AWS</div>
+      </article>
+
+      <article class="tile hover-card">
+        <h3>Geocoding & IIS Log Ingestion</h3>
+        <p>Batch geocoding + log ingestion with partition pruning, layout tuned for cost + query speed.</p>
+        <div class="tags">Spark · UDFs · Partitioning</div>
+      </article>
+
+      <article class="tile hover-card">
+        <h3>Data Quality Framework</h3>
+        <p>YAML-based rules (nulls/dupes/uniqueness) + summaries; wired into CI/CD gates.</p>
+        <div class="tags">YAML · SQL · GitHub Actions</div>
+      </article>
+    </div>
+    <p class="note">More detail available on request. Public sample repos will mirror patterns with synthetic data.</p>
+  </section>
+
   <!-- Skills -->
-  <section id="skills">
+  <section id="skills" class="section">
     <h2>Skills</h2>
-    <ul>
-      <li>Databricks</li>
-      <li>PySpark</li>
-      <li>SQL</li>
-      <li>Delta Lake</li>
-      <li>AWS (S3, Lambda, IAM)</li>
-      <li>Airflow</li>
-      <li>GitHub Actions</li>
-      <li>Power BI</li>
+    <ul class="skill-list icons">
+      <li title="Databricks"><i class="devicon-apachespark-plain"></i> Databricks / Spark</li>
+      <li title="PySpark"><i class="devicon-python-plain"></i> PySpark (Python)</li>
+      <li title="SQL"><i class="devicon-mysql-plain"></i> SQL</li>
+      <li title="Delta Lake"><i class="devicon-apachekafka-original"></i> Delta Lake</li>
+      <li title="AWS"><i class="devicon-amazonwebservices-plain"></i> AWS (S3, Lambda, Glue, Athena)</li>
+      <li title="Airflow"><i class="devicon-apacheairflow-plain"></i> Airflow</li>
+      <li title="GitHub Actions"><i class="devicon-github-original"></i> GitHub Actions</li>
+      <li title="Power BI / Tableau"><i class="devicon-tableau-original"></i> Power BI / Tableau</li>
+      <li title="Docker"><i class="devicon-docker-plain"></i> Docker</li>
     </ul>
   </section>
 
   <!-- Contact -->
-  <section id="contact">
+  <section id="contact" class="section">
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:avesred7@gmail.com">avesred7@gmail.com</a></p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/avinash-reddy-baddam/" target="_blank">View Profile</a></p>
-    <p>GitHub: <a href="https://github.com/avinashreddy-baddam" target="_blank">avinashreddy-baddam</a></p>
+    <div class="contact">
+      <a class="btn" href="mailto:avesred7@gmail.com">avesred7@gmail.com</a>
+      <a class="btn outline" target="_blank" href="https://www.linkedin.com/in/avinash-reddy-baddam/">LinkedIn</a>
+      <a class="btn outline" target="_blank" href="https://github.com/avinashreddy-baddam">GitHub</a>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Avinash Reddy Baddam</p>
+  <footer class="footer">
+    <p>© 2025 Avinash Reddy Baddam — HTML & CSS on GitHub Pages</p>
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
