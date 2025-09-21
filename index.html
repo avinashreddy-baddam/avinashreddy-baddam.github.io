@@ -1,137 +1,269 @@
-<!DOCTYPE html>
-<html lang="en">
+<!-- ====== AR Baddam • Portfolio ====== -->
+<!doctype html>
+<html lang="en" id="top">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Avinash Reddy Baddam | Data Engineer</title>
-  <link rel="preconnect" href="https://fonts.gstatic.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <!-- Devicon (icons for skills) -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AR Baddam • Data Engineer</title>
+  <meta name="description" content="AR Baddam — Data Engineer specializing in Databricks, AWS, Delta Lake, and end-to-end data platforms." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1a24; --bg-2:#0b141c; --page:#ffffff;
+      --ink:#0b1b29; --muted:#5c7285; --soft:#e8eef4;
+      --accent:#4aa3ff; --accent-2:#2c7bd9; --ring:rgba(74,163,255,.25);
+      --max:1100px; --radius:16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--page);color:var(--ink)}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    .container{max-width:var(--max);margin:0 auto;padding:0 20px}
+    section{scroll-margin-top:90px;padding:64px 0}
+    h1,h2,h3{letter-spacing:.2px;margin:0 0 12px}
+    h2{font-size:28px}
+    p{margin:0 0 12px}
+    .muted{color:var(--muted)}
+    .chip{display:inline-block;padding:6px 10px;border-radius:999px;background:#f1f6fb;border:1px solid #e3eef9;font-size:13px;margin:4px 6px 0 0}
+
+    /* Header / Nav */
+    .site-header{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--bg),var(--bg-2));box-shadow:0 1px 0 rgba(255,255,255,.04)}
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:800;color:#e8eef4;letter-spacing:.3px}
+    .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+    .menu{display:flex;gap:22px;align-items:center}
+    .menu a{color:#c6d6e4;font-weight:600}
+    .menu a:hover{color:#ffffff}
+    .menu a.active{color:var(--accent)}
+    .btn{padding:8px 14px;border-radius:10px;border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:#e8eef4}
+    .btn:hover{border-color:var(--accent);box-shadow:0 0 0 6px var(--ring)}
+
+    /* Mobile menu */
+    .burger{display:none;gap:6px;flex-direction:column;cursor:pointer}
+    .burger span{width:22px;height:2px;background:#e8eef4;display:block;border-radius:2px}
+    #nav-toggle{display:none}
+    @media (max-width: 760px){
+      .menu{position:fixed;inset:64px 0 auto 0;background:var(--bg);display:flex;flex-direction:column;padding:18px 20px;border-top:1px solid rgba(255,255,255,.08);transform:translateY(-8px);opacity:0;pointer-events:none;transition:.2s ease}
+      #nav-toggle:checked + label + .menu{transform:translateY(0);opacity:1;pointer-events:auto}
+      .burger{display:flex}
+    }
+
+    /* Hero */
+    .hero{padding:72px 0 40px;background:linear-gradient(180deg,#f7fbff 0%, #ffffff 60%)}
+    .hero-card{background:#fff;border:1px solid #e9eef4;border-radius:var(--radius);padding:28px;display:grid;grid-template-columns:1fr;gap:14px}
+    .hero h1{font-size:34px;line-height:1.2}
+    .hero .lead{font-size:18px;color:var(--muted)}
+    .quick{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+    .cta{display:inline-block;margin-top:6px;padding:10px 14px;border-radius:12px;background:var(--ink);color:#fff;font-weight:600}
+    .cta:hover{background:#10273b}
+
+    /* Cards / lists */
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width: 960px){ .grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width: 640px){ .grid{grid-template-columns:1fr} }
+    .card{border:1px solid #e8eef4;border-radius:14px;padding:16px;background:#fff}
+    .card h3{font-size:18px;margin-bottom:6px}
+    .card p{color:var(--muted)}
+    .card .meta{font-size:13px;color:#6c7e90;margin-top:6px}
+    .pill{display:inline-block;background:#eef6ff;border:1px solid #dbeaff;border-radius:999px;padding:4px 8px;margin:6px 6px 0 0;font-size:12px}
+
+    /* Timeline */
+    .timeline{display:grid;gap:14px}
+    .row{display:grid;grid-template-columns:160px 1fr;gap:16px}
+    @media (max-width: 640px){ .row{grid-template-columns:1fr} }
+    .row .when{color:#6b7f91;font-weight:600}
+    .row .box{background:#fff;border:1px solid #e8eef4;border-radius:12px;padding:14px}
+
+    /* Footer */
+    footer{padding:40px 0;color:#6b7f91;border-top:1px solid #eef3f7}
+  </style>
 </head>
 <body>
-  <!-- Sticky Navbar -->
-  <header class="nav">
-    <a href="#top" class="brand">AR Baddam</a>
-    <nav id="nav-links">
-      <a href="#about">About</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
+
+  <!-- ===== Header ===== -->
+  <header class="site-header">
+    <div class="container nav">
+      <a href="#top" class="brand" aria-label="Home">
+        <span class="dot"></span> AR Baddam
+      </a>
+
+      <!-- mobile toggle -->
+      <input id="nav-toggle" type="checkbox" />
+      <label for="nav-toggle" class="burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </label>
+
+      <nav class="menu" aria-label="Primary">
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact" class="btn">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <!-- Hero -->
-  <section id="top" class="hero">
-    <div class="hero-inner">
-      <h1>Avinash Reddy Baddam</h1>
-      <p class="tagline">Data Engineer • Databricks · PySpark · Delta Lake · AWS · SQL</p>
-      <div class="cta">
-        <a class="btn" href="#projects">View Work</a>
-        <a class="btn outline" href="mailto:avesred7@gmail.com">Contact</a>
+  <!-- ===== Hero / About ===== -->
+  <section id="about" class="hero">
+    <div class="container">
+      <div class="hero-card">
+        <div>
+          <div class="chip">Data Engineer • Databricks • AWS</div>
+          <h1>Hi, I’m <strong>AR Baddam</strong>.</h1>
+          <p class="lead">
+            I design and scale end-to-end data platforms on Databricks (Delta Lake) across AWS/Azure—covering ingestion,
+            bronze→silver→gold transformations, CI/CD, quality, and performance. I love turning messy pipelines into
+            clean, governed, and fast data products.
+          </p>
+          <div class="quick">
+            <a class="cta" href="#projects">View Projects</a>
+            <a class="cta" style="background:var(--accent);color:#07213a" href="#contact">Get in touch</a>
+          </div>
+        </div>
+        <div>
+          <p><strong>Core strengths</strong></p>
+          <div>
+            <span class="pill">Databricks (DBR 14/15)</span>
+            <span class="pill">Delta Lake + CDF</span>
+            <span class="pill">Spark SQL/PySpark</span>
+            <span class="pill">AWS (S3, IAM, Lambda)</span>
+            <span class="pill">Airflow/GitHub Actions</span>
+            <span class="pill">Data Modeling (Medallion)</span>
+            <span class="pill">Performance & Cost</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- About -->
-  <section id="about" class="section">
-    <h2>About Me</h2>
-    <p>
-      Data Engineer focused on reliable, scalable data platforms on Databricks (Bronze → Silver → Gold)
-      with strong experience in PySpark, Delta optimization (partitioning, Z-Order), CDC (SCD-1/2), and CI/CD on AWS.
-      I like simplifying pipelines, improving runtimes, and making data products easy to ship and maintain.
-    </p>
-  </section>
+  <!-- ===== Experience ===== -->
+  <section id="experience">
+    <div class="container">
+      <h2>Experience</h2>
+      <p class="muted">Selected roles & impact.</p>
+      <div class="timeline" role="list">
+        <div class="row" role="listitem">
+          <div class="when">Gainwell Technologies<br/><span class="muted">Data Engineer</span><br/><span class="muted">2022 — Present</span></div>
+          <div class="box">
+            <h3>Insight & DC-CEF Platforms</h3>
+            <p>
+              Built and maintained multi-tenant data platforms (OH, CO, ID, NV, DE, etc.) on Databricks. Implemented
+              CDC with Delta CDF, standardized bronze→silver→gold pipelines, automated schema management, and CI/CD with
+              GitHub Actions. Optimized Spark jobs via partitioning/Z-Order and autoscaling policies.
+            </p>
+            <div class="meta">Stack: Databricks, Delta Lake, PySpark/SQL, AWS S3/IAM, Airflow, GitHub Actions</div>
+          </div>
+        </div>
 
-  <!-- Experience -->
-  <section id="experience" class="section">
-    <h2>Experience</h2>
-    <div class="cards">
-      <article class="card hover-card">
-        <header>
-          <h3>Senior Data Engineer</h3>
-          <span class="meta">Healthcare Data Platform · 2023–Present</span>
-        </header>
-        <ul class="bullets">
-          <li>Designed end-to-end ETL (Bronze → Silver → Gold) on Databricks for high-volume datasets.</li>
-          <li>Implemented CDC & partition/Z-Order; reduced pipeline runtime by ~40%.</li>
-          <li>YAML-driven configs + GitHub Actions CI/CD for notebooks and workflows.</li>
-        </ul>
-        <div class="tags">Databricks · PySpark · Delta Lake · AWS S3 · GitHub Actions</div>
-      </article>
-
-      <article class="card hover-card">
-        <header>
-          <h3>Data Engineer</h3>
-          <span class="meta">Data Modernization · 2021–2023</span>
-        </header>
-        <ul class="bullets">
-          <li>Migrated legacy SQL/SSMS pipelines to Databricks; standardized schemas and audit columns.</li>
-          <li>Optimized joins with broadcast hints & clustering for BI analytics performance.</li>
-          <li>Wrote troubleshooting playbooks for cluster/library issues and on-call response.</li>
-        </ul>
-        <div class="tags">SQL · Performance Tuning · Airflow · Power BI · IAM</div>
-      </article>
+        <div class="row" role="listitem">
+          <div class="when">Lyft & Wells Fargo (Consulting)<br/><span class="muted">2019 — 2022</span></div>
+          <div class="box">
+            <h3>Data Engineering & Analytics Enablement</h3>
+            <p>
+              Delivered ingestion frameworks, quality checks, and reusable transformation modules. Enabled analytics
+              teams with governed datasets and improved SLAs.
+            </p>
+            <div class="meta">Stack: Spark, Scala/Python, SQL, AWS</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Projects -->
-  <section id="projects" class="section">
-    <h2>Highlighted Projects</h2>
-    <div class="grid">
-      <article class="tile hover-card">
-        <h3>Scalable Healthcare Pipeline</h3>
-        <p>Bronze → Silver → Gold architecture with CDC and schema enforcement; job metrics + alerts.</p>
-        <div class="tags">Databricks · PySpark · Delta · AWS</div>
-      </article>
+  <!-- ===== Projects ===== -->
+  <section id="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <p class="muted">A few things I’ve shipped or led.</p>
 
-      <article class="tile hover-card">
-        <h3>Geocoding & IIS Log Ingestion</h3>
-        <p>Batch geocoding + log ingestion with partition pruning, layout tuned for cost + query speed.</p>
-        <div class="tags">Spark · UDFs · Partitioning</div>
-      </article>
+      <div class="grid">
+        <article class="card">
+          <h3>Databricks Medallion Accelerator</h3>
+          <p>
+            YAML-driven framework to standardize Bronze→Silver→Gold pipelines with hash-based dedupe, audit cols,
+            auto-schema evolution, and unit checks. Reduced new table onboarding time by 60%.
+          </p>
+          <div>
+            <span class="pill">PySpark</span><span class="pill">Delta Lake</span><span class="pill">CI/CD</span>
+          </div>
+        </article>
 
-      <article class="tile hover-card">
-        <h3>Data Quality Framework</h3>
-        <p>YAML-based rules (nulls/dupes/uniqueness) + summaries; wired into CI/CD gates.</p>
-        <div class="tags">YAML · SQL · GitHub Actions</div>
-      </article>
-    </div>
-    <p class="note">More detail available on request. Public sample repos will mirror patterns with synthetic data.</p>
-  </section>
+        <article class="card">
+          <h3>IIS Log Ingestion & Parser</h3>
+          <p>
+            Automated unzip, normalize, and ingest of daily IIS logs from S3 to Bronze with partitioning by dt and host,
+            plus Silver parsing UDFs and Gold usage analytics.
+          </p>
+          <div>
+            <span class="pill">AWS S3</span><span class="pill">Delta</span><span class="pill">Performance</span>
+          </div>
+        </article>
 
-  <!-- Skills -->
-  <section id="skills" class="section">
-    <h2>Skills</h2>
-    <ul class="skill-list icons">
-      <li title="Databricks"><i class="devicon-apachespark-plain"></i> Databricks / Spark</li>
-      <li title="PySpark"><i class="devicon-python-plain"></i> PySpark (Python)</li>
-      <li title="SQL"><i class="devicon-mysql-plain"></i> SQL</li>
-      <li title="Delta Lake"><i class="devicon-apachekafka-original"></i> Delta Lake</li>
-      <li title="AWS"><i class="devicon-amazonwebservices-plain"></i> AWS (S3, Lambda, Glue, Athena)</li>
-      <li title="Airflow"><i class="devicon-apacheairflow-plain"></i> Airflow</li>
-      <li title="GitHub Actions"><i class="devicon-github-original"></i> GitHub Actions</li>
-      <li title="Power BI / Tableau"><i class="devicon-tableau-original"></i> Power BI / Tableau</li>
-      <li title="Docker"><i class="devicon-docker-plain"></i> Docker</li>
-    </ul>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <h2>Contact</h2>
-    <div class="contact">
-      <a class="btn" href="mailto:avesred7@gmail.com">avesred7@gmail.com</a>
-      <a class="btn outline" target="_blank" href="https://www.linkedin.com/in/avinash-reddy-baddam/">LinkedIn</a>
-      <a class="btn outline" target="_blank" href="https://github.com/avinashreddy-baddam">GitHub</a>
+        <article class="card">
+          <h3>Provider & Claims Data Quality Suite</h3>
+          <p>
+            Rule-based validations (PK/FK, ranges, referential integrity, nullability) with summary dashboards and alerts;
+            cut incident rate by 35% and improved SLA adherence.
+          </p>
+          <div>
+            <span class="pill">Quality</span><span class="pill">Airflow</span><span class="pill">Observability</span>
+          </div>
+        </article>
+      </div>
     </div>
   </section>
 
-  <footer class="footer">
-    <p>© 2025 Avinash Reddy Baddam — HTML & CSS on GitHub Pages</p>
+  <!-- ===== Skills ===== -->
+  <section id="skills">
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="card">
+        <p><strong>Databricks & Spark:</strong> PySpark, Spark SQL, Delta Lake, CDF, OPTIMIZE/Z-Order, cluster sizing & autoscale.</p>
+        <p><strong>Cloud & Orchestration:</strong> AWS (S3, IAM, Lambda), Airflow, GitHub Actions, Databricks Jobs/Workflows.</p>
+        <p><strong>Data Modeling & Quality:</strong> Medallion, SCD-1/2, hashing keys, dedupe, checks & monitors.</p>
+        <p><strong>Languages & Tools:</strong> Python, SQL, Scala (reading), Git, Jupyter/VS Code.</p>
+        <p class="muted">Currently learning: cost-aware design for large workloads and advanced Delta change data processing.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Contact ===== -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p class="muted">Open to roles in Data Engineering (Databricks/AWS) and platform work.</p>
+      <div class="card">
+        <p><strong>Email:</strong> <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+        <p><strong>GitHub:</strong> <a href="https://github.com/avinashreddy-baddam" target="_blank" rel="noopener">github.com/avinashreddy-baddam</a></p>
+        <p><strong>LinkedIn:</strong> <a href="#" target="_blank" rel="noopener">linkedin.com/in/your-handle</a></p>
+        <p class="muted">Prefer no resume download link as requested.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> AR Baddam • Built with GitHub Pages
+    </div>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- ===== Scripts ===== -->
+  <script>
+    // active link highlight on scroll
+    const links=[...document.querySelectorAll('.menu a[href^="#"]')];
+    const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    function setActive(){
+      let cur=sections[0];
+      for(const s of sections){ if(s.getBoundingClientRect().top <= 90) cur=s; }
+      links.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+cur.id));
+    }
+    window.addEventListener('scroll', setActive, {passive:true});
+    setActive();
+
+    // year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
